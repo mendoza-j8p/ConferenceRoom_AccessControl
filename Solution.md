@@ -1,12 +1,12 @@
 # Solution
 
-1. El primer paso para implementar el control de acceso a la sala de conferencias en Go es definir la estructura y las variables necesarias para el programa.
+**1. El primer paso para implementar el control de acceso a la sala de conferencias en Go es definir la estructura y las variables necesarias para el programa.**
 
 - Esto incluye crear una estructura llamada `ConferenceRoom` que represente la sala de conferencias, con campos para la capacidad máxima, el contador de personas y un mutex para garantizar el acceso seguro.
 
 - Además, se deben declarar dos canales, `enterCh` y `exitCh`, para sincronizar las operaciones de entrada y salida. Estos canales permitirán que las personas intenten ingresar o salir de la sala, y serán utilizados junto con la instrucción `select` para manejar las operaciones de manera no bloqueante.
 
-2. El siguiente paso consiste en implementar las funciones `enterConferenceRoom()` y `exitConferenceRoom()` para controlar el acceso a la sala de conferencias.
+**2. El siguiente paso consiste en implementar las funciones `enterConferenceRoom()` y `exitConferenceRoom()` para controlar el acceso a la sala de conferencias.**
 
 - Dentro de la función `enterConferenceRoom()`, se debe enviar un valor al canal `enterCh` para intentar permitir la entrada a la sala. Luego, utilizando un bloque `select`, se puede verificar si hay espacio disponible en la sala.
 
@@ -19,8 +19,9 @@ Si la sala está llena, se muestra un mensaje indicando que la persona debe espe
 
 - Si la sala está vacía, se muestra un mensaje indicando que no hay personas para salir. Una vez que se haya completado la implementación de estas funciones, se puede continuar con los siguientes pasos para finalizar el control de acceso a la sala de conferencias.
 
-3. El siguiente paso consiste en crear una goroutine para controlar el acceso a la sala de conferencias.
-Esta goroutine se encargará de escuchar los canales `enterCh` y `exitCh` utilizando la instrucción `select`.
+**3. El siguiente paso consiste en crear una goroutine para controlar el acceso a la sala de conferencias.**
+
+- Esta goroutine se encargará de escuchar los canales `enterCh` y `exitCh` utilizando la instrucción `select`.
 
 - En cada caso, se adquirirá el bloqueo del mutex correspondiente y se realizarán las operaciones necesarias para permitir la entrada o salida de una persona de la sala de conferencias.
 
@@ -29,7 +30,7 @@ Por ejemplo, cuando se recibe un valor en `enterCh`, se verificará si hay espac
 Esta goroutine se ejecutará de forma continua, escuchando los canales y respondiendo adecuadamente a las operaciones de entrada y salida.
 Una vez que se haya creado esta goroutine, se habrá completado la implementación del control de acceso a la sala de conferencias.
 
-4. Además, es importante incluir una simulación de personas intentando ingresar y salir de la sala.
+**4. Además, es importante incluir una simulación de personas intentando ingresar y salir de la sala.**
 
 - Esto se puede hacer mediante un bucle o ciclo en el que se llamen a las funciones `enterConferenceRoom()` y `exitConferenceRoom()` en un orden específico.
 
